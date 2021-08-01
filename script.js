@@ -1,5 +1,11 @@
 'use strict';
 
+const form = document.querySelector('.form');
+const containerLocation = document.querySelector('.location');
+const inputType = document.querySelector('.form__input--type');
+const inputTitle = document.querySelector('.form__input--title');
+const inputNote = document.querySelector('.form__input--note');
+
 // Geoloction 
 if(navigator.geolocation)
 navigator.geolocation.getCurrentPosition(
@@ -16,20 +22,22 @@ navigator.geolocation.getCurrentPosition(
 
         
         map.on('click' , (mapEvent) =>{
-            console.log(mapEvent);
-            const {lat , lng} = mapEvent.latlng;
-            L.marker([lat , lng]).addTo(map)
-        .bindPopup(
-            L.popup({
-                maxWidth:250,
-                minWidth:100,
-                autoClose:false,
-                closeOnClick:false,
-            })
-        )
-        .setPopupContent('Title')
-        .openPopup();
+           form.classList.remove('hidden');
+           inputTitle.focus();
+        //     console.log(mapEvent);
+        //     const {lat , lng} = mapEvent.latlng;
+        //     L.marker([lat , lng]).addTo(map)
+        // .bindPopup(
+        //     L.popup({
+        //         maxWidth:250,
+        //         minWidth:100,
+        //         autoClose:false,
+        //         closeOnClick:false,
+        //     })
+        // )
+        // .setPopupContent('Title')
+        // .openPopup();
         })
     },
-    () => console.log('Could not get your position')
+    () => alert('Could not get your position')
 )
