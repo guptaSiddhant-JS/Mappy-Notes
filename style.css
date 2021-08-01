@@ -120,7 +120,10 @@ a:visited {
 }
 
 .form__btn {
-  display: none;
+  width:6rem;
+  height:2rem;
+  margin-left: 80%;
+  padding:0.2;
 }
 
 .copyright {
