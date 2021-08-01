@@ -14,9 +14,22 @@ navigator.geolocation.getCurrentPosition(
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
            }).addTo(map);
 
-        L.marker(coords).addTo(map)
-        .bindPopup('Siddhant Home.')
+        
+        map.on('click' , (mapEvent) =>{
+            console.log(mapEvent);
+            const {lat , lng} = mapEvent.latlng;
+            L.marker([lat , lng]).addTo(map)
+        .bindPopup(
+            L.popup({
+                maxWidth:250,
+                minWidth:100,
+                autoClose:false,
+                closeOnClick:false,
+            })
+        )
+        .setPopupContent('Title')
         .openPopup();
+        })
     },
     () => console.log('Could not get your position')
 )
