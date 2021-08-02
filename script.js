@@ -5,12 +5,12 @@ const containerLocation = document.querySelector('.location');
 const inputType = document.querySelector('.form__input--type');
 const inputTitle = document.querySelector('.form__input--title');
 const inputNote = document.querySelector('.form__input--note');
-
 // App Architecture
 class Location{
     date = new Date();
     id= (Date.now() + '').slice(-10);
-        constructor(coords , title , note){
+        constructor(type , coords , title , note){
+            this.type = type;
             this.coords = coords;
             this.title = title;
             this.note = note;
@@ -20,6 +20,8 @@ class Location{
 class App {
     #map;
     #mapEvent;
+    #locations =[];
+
     constructor(){
        this._getPosition();
 
@@ -54,20 +56,38 @@ class App {
     }
     _newLocation(el){
         el.preventDefault();
-        // Clearing the responces
-        inputType.value = inputTitle.value = inputNote.value ='';
-                const {lat , lng} = this.#mapEvent.latlng;
-                L.marker([lat , lng]).addTo(this.#map)
+
+        const type = inputType.value;
+        const title = inputTitle.value;
+        const note = inputNote.value;
+        const {lat , lng} = this.#mapEvent.latlng;
+        let location;
+        //  Storeing the user inputed Value
+          location = new Location(type , [lat , lng] , title , note);
+      
+        //    Added loaction to the arry
+        this.#locations.push(location);
+        console.log(location);
+        // Render the Location on the Map
+               this.renderLocationMarker(location)
+                // Clearing the responces
+            inputType.value = inputTitle.value = inputNote.value ='';
+        } 
+        renderLocationMarker(loc){
+            L.marker(loc.coords).addTo(this.#map)
             .bindPopup(
                 L.popup({
                     maxWidth:250,
                     minWidth:100,
                     autoClose:false,
                     closeOnClick:false,
+                    className:`${loc.type}-popup`,
                 })
             )
-            .setPopupContent('Title')
-            .openPopup();}
+            .setPopupContent(loc.title)
+            .openPopup();
+        }
+        
 
 
 }
