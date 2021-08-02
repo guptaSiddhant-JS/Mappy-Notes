@@ -7,6 +7,16 @@ const inputTitle = document.querySelector('.form__input--title');
 const inputNote = document.querySelector('.form__input--note');
 
 // App Architecture
+class Location{
+    date = new Date();
+    id= (Date.now() + '').slice(-10);
+        constructor(coords , title , note){
+            this.coords = coords;
+            this.title = title;
+            this.note = note;
+        }
+}
+
 class App {
     #map;
     #mapEvent;
