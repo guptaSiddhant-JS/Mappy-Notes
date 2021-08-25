@@ -69,11 +69,13 @@ class App {
         this.#locations.push(location);
         console.log(location);
         // Render the Location on the Map
-               this.renderLocationMarker(location)
+               this._renderLocationMarker(location);
+        // Rendering the Location on the List
+        this._renderLocation(location)   ;
                 // Clearing the responces
             inputType.value = inputTitle.value = inputNote.value ='';
         } 
-        renderLocationMarker(loc){
+        _renderLocationMarker(loc){
             L.marker(loc.coords).addTo(this.#map)
             .bindPopup(
                 L.popup({
@@ -86,6 +88,33 @@ class App {
             )
             .setPopupContent(loc.title)
             .openPopup();
+        }
+        _renderLocation(loc){
+         let html = `
+               <li class="location location--running" data-id="${loc.id}">
+               <div class="location__head">
+                 <span class="location__heading">
+               
+                   🍔 👀 🛒
+                 </span>
+                 <span class="location__value">${loc.type}</span>
+                 <span class="location__heading">
+                   <span class="location__icon">📅</span>
+                 <span class="location__value">l${loc.date}</span>
+                 </span>
+               </div>
+               <div class="location__title">
+                 <span class="location__icon">➤</span>
+                 <span class="location__value">${loc.title}</span>
+               </div>
+               <div class="location__note">
+                 <span class="location__icon">📝</span>
+                 <span class="location__value">${loc.note}</span>
+               </div>   
+                </li> 
+         ` ;
+         form.insertAdjacentHTML('afterend' , html);
+         console.log(loc.date);
         }
         
 

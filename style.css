@@ -127,6 +127,44 @@ a:visited {
   padding:0.2;
 }
 
+.location--food {
+  border-left: 5px solid var(--color-brand--2);
+}
+.location--view {
+  border-left: 5px solid var(--color-brand--1);
+}
+.location--store {
+  border-left: 5px solid var(--color-brand--3);
+}
+.location__title {
+  font-size: 1.7rem;
+  font-weight: 600;
+  grid-column: 1 / -1;
+}
+
+.location__details {
+  display: flex;
+  align-items: baseline;
+}
+
+.location__icon {
+  font-size: 1.8rem;
+  margin-right: 0.2rem;
+  height: 0.28rem;
+}
+
+.location__value {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.location__unit {
+  font-size: 1.1rem;
+  color: var(--color-light--1);
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
 .copyright {
   margin-top: auto;
   font-size: 1.3rem;
