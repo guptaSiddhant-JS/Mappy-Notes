@@ -90,6 +90,9 @@ class App {
             .openPopup();
         }
         _renderLocation(loc){
+          // Date 
+         let today = loc.date;
+         let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
          let html = `
                <li class="location location--running" data-id="${loc.id}">
                <div class="location__head">
@@ -100,7 +103,7 @@ class App {
                  <span class="location__value">${loc.type}</span>
                  <span class="location__heading">
                    <span class="location__icon">📅</span>
-                 <span class="location__value">l${loc.date}</span>
+                 <span class="location__value">${date}</span>
                  </span>
                </div>
                <div class="location__title">
@@ -114,7 +117,8 @@ class App {
                 </li> 
          ` ;
          form.insertAdjacentHTML('afterend' , html);
-         console.log(loc.date);
+        
+         console.log(date);
         }
         
 
