@@ -96,9 +96,16 @@ class App {
          let html = `
                <li class="location location--Food" data-id="${loc.id}">
                <div class="location__heading">
-               <div class="location__type">${loc.type}</div>
-               <div class="location__date">📅 ${date}</div>
-             </div>
+                   <div class="location__type">${loc.type}</div>
+                   <div class="location__date">📅 ${date}</div>
+               </div>
+               <div class="location__title">➤ ${loc.title}</div>
+               <div class="location__title">
+                  <span>📝</span>
+                  <span class="location__noteContainer">
+                        ${loc.note}
+                  </span>
+                </div>
                </li> 
          ` ;
          form.insertAdjacentHTML('afterend' , html);

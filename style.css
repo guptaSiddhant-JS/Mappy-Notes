@@ -161,8 +161,18 @@ a:visited {
   font-size: 1.7rem;
   font-weight: 600;
   grid-column: 1 / -1;
+  display: flex;
 }
-
+.location__noteContainer{
+  width: 300px;
+  min-height: 100px;
+  margin-left: 10px;
+  overflow:scroll;
+  color: #00c46a;
+}
+/* .location__noteContainer::-webkit-scrollbar{
+  display: none;
+} */
 .location__details {
   display: flex;
   align-items: baseline;
