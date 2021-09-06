@@ -54,6 +54,16 @@ class App {
                form.classList.remove('hidden');
                inputTitle.focus();
     }
+    _hideForm(){
+             // Clearing the responces
+             inputType.value = inputTitle.value = inputNote.value ='';
+
+             form.style.display = 'none';
+             form.classList.add('hidden');
+             setTimeout(() =>  (form.style.display = 'grid') , 1000)
+     
+
+    }
     _newLocation(el){
         el.preventDefault();
 
@@ -72,8 +82,8 @@ class App {
                this._renderLocationMarker(location);
         // Rendering the Location on the List
         this._renderLocation(location)   ;
-                // Clearing the responces
-            inputType.value = inputTitle.value = inputNote.value ='';
+        //  Hiding the Form
+                this._hideForm();
         } 
         _renderLocationMarker(loc){
             L.marker(loc.coords).addTo(this.#map)
@@ -117,8 +127,6 @@ class App {
                </li> 
          ` ;
          form.insertAdjacentHTML('afterend' , html);
-        
-         console.log(date);
         }
         
 
