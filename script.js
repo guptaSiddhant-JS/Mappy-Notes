@@ -110,7 +110,7 @@ class App {
          let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
         
          let html = `
-               <li class="location location--Food" data-id="${loc.id}">
+               <li class="location location--${loc.type}" data-id="${loc.id}">
                <div class="location__heading">
                    <div class="location__type">
                    <span>${icon}</span>

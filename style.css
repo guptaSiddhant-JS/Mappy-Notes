@@ -224,10 +224,10 @@ a:visited {
   background-color: var(--color-dark--1);
 }
 .Food-popup .leaflet-popup-content-wrapper {
-  border-left: 5px solid var(--color-brand--2);
+  border-left: 5px solid var(--color-brand--1);
 }
 .View-popup .leaflet-popup-content-wrapper {
-  border-left: 5px solid var(--color-brand--1);
+  border-left: 5px solid var(--color-brand--2);
 }
 .Store-popup .leaflet-popup-content-wrapper {
   border-left: 5px solid var(--color-brand--3);
