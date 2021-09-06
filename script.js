@@ -93,10 +93,18 @@ class App {
           // Date 
          let today = loc.date;
          let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        //  Icon
+         let icon = '';
+            if(loc.type === 'Food') icon = '🍔';
+            else if(loc.type == 'View') icon = '👀';
+            else icon='🛒';
          let html = `
                <li class="location location--Food" data-id="${loc.id}">
                <div class="location__heading">
-                   <div class="location__type">${loc.type}</div>
+                   <div class="location__type">
+                   <span>${icon}</span>
+                   ${loc.type}
+                   </div>
                    <div class="location__date">📅 ${date}</div>
                </div>
                <div class="location__title">➤ ${loc.title}</div>
