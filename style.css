@@ -127,14 +127,35 @@ a:visited {
   padding:0.2;
 }
 
-.location--food {
+.location--Food {
   border-left: 5px solid var(--color-brand--2);
 }
-.location--view {
+.location--View {
   border-left: 5px solid var(--color-brand--1);
 }
-.location--store {
+.location--Store {
   border-left: 5px solid var(--color-brand--3);
+}
+.location{
+  padding:2%;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  background:var(--color-dark--2) ;
+}
+.location__heading{
+  display: flex;
+  justify-content: space-between;
+  opacity: 0.8;
+}
+.location__type{
+  font-size: 1.7rem;
+  font-weight: 600;
+  
+}
+.location__date{
+  font-size: 1.7rem;
+  font-weight: 600;
+  grid-column: 1 / -1;
 }
 .location__title {
   font-size: 1.7rem;
@@ -192,13 +213,13 @@ a:visited {
 .leaflet-popup .leaflet-popup-tip {
   background-color: var(--color-dark--1);
 }
-.food-popup .leaflet-popup-content-wrapper {
+.Food-popup .leaflet-popup-content-wrapper {
   border-left: 5px solid var(--color-brand--2);
 }
-.view-popup .leaflet-popup-content-wrapper {
+.View-popup .leaflet-popup-content-wrapper {
   border-left: 5px solid var(--color-brand--1);
 }
-.store-popup .leaflet-popup-content-wrapper {
+.Store-popup .leaflet-popup-content-wrapper {
   border-left: 5px solid var(--color-brand--3);
 }
 

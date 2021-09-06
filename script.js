@@ -94,27 +94,12 @@ class App {
          let today = loc.date;
          let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
          let html = `
-               <li class="location location--running" data-id="${loc.id}">
-               <div class="location__head">
-                 <span class="location__heading">
-               
-                   🍔 👀 🛒
-                 </span>
-                 <span class="location__value">${loc.type}</span>
-                 <span class="location__heading">
-                   <span class="location__icon">📅</span>
-                 <span class="location__value">${date}</span>
-                 </span>
-               </div>
-               <div class="location__title">
-                 <span class="location__icon">➤</span>
-                 <span class="location__value">${loc.title}</span>
-               </div>
-               <div class="location__note">
-                 <span class="location__icon">📝</span>
-                 <span class="location__value">${loc.note}</span>
-               </div>   
-                </li> 
+               <li class="location location--Food" data-id="${loc.id}">
+               <div class="location__heading">
+               <div class="location__type">${loc.type}</div>
+               <div class="location__date">📅 ${date}</div>
+             </div>
+               </li> 
          ` ;
          form.insertAdjacentHTML('afterend' , html);
         
@@ -126,3 +111,22 @@ class App {
 }
 const app = new App ();
 
+// <div class="location__head">
+{/* <span class="location__heading">
+               
+🍔 👀 🛒
+</span>
+<span class="location__value">${loc.type}</span>
+<span class="location__heading">
+<span class="location__icon"></span>
+<span class="location__value">${date}</span>
+</span>
+</div>
+<div class="location__title">
+<span class="location__icon">➤</span>
+<span class="location__value">${loc.title}</span>
+</div>
+<div class="location__note">
+<span class="location__icon">📝</span>
+<span class="location__value">${loc.note}</span>
+</div>    */}
