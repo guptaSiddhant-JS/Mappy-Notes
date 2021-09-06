@@ -5,6 +5,7 @@ const containerLocation = document.querySelector('.location');
 const inputType = document.querySelector('.form__input--type');
 const inputTitle = document.querySelector('.form__input--title');
 const inputNote = document.querySelector('.form__input--note');
+let icon = '';
 // App Architecture
 class Location{
     date = new Date();
@@ -86,6 +87,10 @@ class App {
                 this._hideForm();
         } 
         _renderLocationMarker(loc){
+          //  Icon
+          if(loc.type === 'Food') icon = '🍔';
+          else if(loc.type == 'View') icon = '👀';
+          else icon='🛒';
             L.marker(loc.coords).addTo(this.#map)
             .bindPopup(
                 L.popup({
@@ -96,18 +101,14 @@ class App {
                     className:`${loc.type}-popup`,
                 })
             )
-            .setPopupContent(loc.title)
+            .setPopupContent(`${icon} ${loc.title}`)
             .openPopup();
         }
         _renderLocation(loc){
           // Date 
          let today = loc.date;
          let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-        //  Icon
-         let icon = '';
-            if(loc.type === 'Food') icon = '🍔';
-            else if(loc.type == 'View') icon = '👀';
-            else icon='🛒';
+        
          let html = `
                <li class="location location--Food" data-id="${loc.id}">
                <div class="location__heading">
