@@ -1,7 +1,7 @@
 'use strict';
 
 const form = document.querySelector('.form');
-const containerLocation = document.querySelector('.location');
+const containerLocations = document.querySelector('.locations');
 const inputType = document.querySelector('.form__input--type');
 const inputTitle = document.querySelector('.form__input--title');
 const inputNote = document.querySelector('.form__input--note');
@@ -10,23 +10,29 @@ let icon = '';
 class Location{
     date = new Date();
     id= (Date.now() + '').slice(-10);
+    clicks = 0;
         constructor(type , coords , title , note){
             this.type = type;
             this.coords = coords;
             this.title = title;
             this.note = note;
         }
+     
+     click(){
+         this.clicks++;
+     }   
 }
 
 class App {
     #map;
     #mapEvent;
+    #mapZoomLevel = 13;
     #locations =[];
 
     constructor(){
        this._getPosition();
-
        form.addEventListener('submit' , this._newLocation.bind(this));
+       containerLocations.addEventListener('click', this._moveToPopup.bind(this));
     }
     _getPosition(){
         // Geoloction 
@@ -40,7 +46,7 @@ class App {
             const {longitude} = pos.coords;
             // console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
             const coords = [latitude , longitude];
-             this.#map = L.map('map').setView(coords, 13);
+             this.#map = L.map('map').setView(coords,this.#mapZoomLevel);
     
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -129,28 +135,21 @@ class App {
          ` ;
          form.insertAdjacentHTML('afterend' , html);
         }
-        
+        _moveToPopup(el){
+            const locationEl = el.target.closest('.location');
+            if(!locationEl) return;
+
+               const location = this.#locations.find(
+                   loc => loc.id === locationEl.dataset.id 
+               );
+               console.log(location);
+               this.#map.setView(location.coords , this.#mapZoomLevel, {
+                   animate:true,
+                   pan:{duration : 1    }
+               });     
+            location.click();
+        }
 
 
 }
 const app = new App ();
-
-// <div class="location__head">
-{/* <span class="location__heading">
-               
-🍔 👀 🛒
-</span>
-<span class="location__value">${loc.type}</span>
-<span class="location__heading">
-<span class="location__icon"></span>
-<span class="location__value">${date}</span>
-</span>
-</div>
-<div class="location__title">
-<span class="location__icon">➤</span>
-<span class="location__value">${loc.title}</span>
-</div>
-<div class="location__note">
-<span class="location__icon">📝</span>
-<span class="location__value">${loc.note}</span>
-</div>    */}
